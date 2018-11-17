@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pycasparcg",
+    name="pycaspar",
     version="0.1",
     author="Tore Sinding Bekkedal",
     author_email="toresbe@gmail.com",
