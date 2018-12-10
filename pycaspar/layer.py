@@ -1,11 +1,21 @@
 class Layer():
     def __init__(self, caspar_instance, channel_id, layer_id):
+        """
+
+        Create a Caspar Layer object.
+
+        :param pycaspar.CasparCG caspar_instance: Caspar instance
+        """
         self.layer_id = layer_id
         self.channel_id = channel_id
         self.caspar = caspar_instance
 
     @property
     def name(self):
+        """
+
+        Return the Caspar-internal name for the current layer.
+        """
         return '%d-%d' % (self.channel_id, self.layer_id)
 
     @property

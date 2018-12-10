@@ -6,6 +6,13 @@ import re
 
 class CasparCG:
     def __init__(self, hostname, amcp_port = 5250):
+        """
+
+        Open a connection to a CasparCG instance.
+
+        :param string hostname: Host name of Caspar server.
+        :param int amcp_port: Port number for AMCP connection.
+        """
         self.socket = None
         self.hostname = hostname
         self.amcp_port = amcp_port
@@ -87,21 +94,43 @@ class CasparCG:
 
     @property
     def channels(self):
+        """
+
+        Query the server and return a list of channels.
+        """
         self._get_info()
-        return self._layers
+        return self._channels
 
     def layer(self, channel_id, layer_id):
+        """
+
+        Create and return a Layer object corresponding to channel and layer ID numbers.
+
+        :param int channel_id: Channel ID number.
+        :param int layer_id: Layer ID number.
+        """
         return CasparLayer(self, channel_id, layer_id)
 
     def channel(self, channel_id):
+        """
+
+        Create and return a Channel object corresponding to channel ID number.
+
+        :param int channel_id: Channel ID number.
+        """
         return CasparChannel(self, channel_id)
 
     @property
     def layers(self):
+        """
+
+        Query the server and return a list of layers.
+        """
         self._get_info()
         return self._layers
 
 if __name__ == '__main__':
-    c = CasparCG('localhost')
+    #c = CasparCG('localhost')
     #print(c._send_command('INFO 1-50'))
-    print((c.channel(1).framerate))
+    #print((c.channel(1).framerate))
+    pass
