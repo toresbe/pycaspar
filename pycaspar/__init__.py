@@ -2,8 +2,8 @@ import socket
 import logging
 import xml.etree.ElementTree as ET
 import re
-from channel import Channel
-from layer import Layer
+from .channel import Channel
+from .layer import Layer
 
 
 class CasparCG:
