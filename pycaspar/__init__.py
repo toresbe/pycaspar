@@ -2,6 +2,8 @@ import socket
 import logging
 import xml.etree.ElementTree as ET
 import re
+from channel import Channel
+from layer import Layer
 
 
 class CasparCG:
@@ -109,7 +111,7 @@ class CasparCG:
         :param int channel_id: Channel ID number.
         :param int layer_id: Layer ID number.
         """
-        return CasparLayer(self, channel_id, layer_id)
+        return Layer(self, channel_id, layer_id)
 
     def channel(self, channel_id):
         """
@@ -118,7 +120,7 @@ class CasparCG:
 
         :param int channel_id: Channel ID number.
         """
-        return CasparChannel(self, channel_id)
+        return Channel(self, channel_id)
 
     @property
     def layers(self):

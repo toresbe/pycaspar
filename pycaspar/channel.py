@@ -1,4 +1,4 @@
-class CasparChannel():
+class Channel():
     def __init__(self, caspar_instance, channel_id):
         self.channel_id = channel_id
         self.caspar = caspar_instance
@@ -27,7 +27,7 @@ class CasparChannel():
         Get a Caspar Layer object for the given numeric layer ID
         :param int layer_id: Layer ID
         """
-        return CasparLayer(self.caspar, self.channel_id, layer_id)
+        return Layer(self.caspar, self.channel_id, layer_id)
 
     def clear(self):
         """
