@@ -1,3 +1,5 @@
+from .layer import Layer
+
 class Channel():
     def __init__(self, caspar_instance, channel_id):
         self.channel_id = channel_id
