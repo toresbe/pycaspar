@@ -56,12 +56,14 @@ class CasparCG:
             while returned_data_buffer[-4:] != b'\r\n\r\n':
                 returned_data_buffer += self.socket.recv(512)
 
-            returned_data = returned_data_buffer.splitlines()[:-1]
+            returned_data = returned_data_buffer.decode().splitlines()[:-1]
 
         elif return_code == 201: # single-line returned_data
             returned_data = b''
             while returned_data[-2:] != b'\r\n':
                 returned_data += self.socket.recv(512)
+
+            returned_data = returned_data.decode()
 
         elif return_code == 202: # no data returned
             returned_data = None
@@ -69,9 +71,7 @@ class CasparCG:
         else:
             raise ValueError('CasparCG command failed: ' + response)
 
-        if returned_data is None:
-            return None
-        return returned_data.decode()
+        return returned_data
 
     def _send_command(self, command, xmlreply=False):
         self.socket.send(('%s\r\n' % command).encode('UTF-8'))
