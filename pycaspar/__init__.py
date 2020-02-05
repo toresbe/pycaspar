@@ -51,7 +51,7 @@ class CasparCG:
         # 202 [command] OK - The command has been executed.
 
         if return_code == 200: # multiline returned_data
-            returned_data_buffer = ''
+            returned_data_buffer = b''
 
             while returned_data_buffer[-4:] != b'\r\n\r\n':
                 returned_data_buffer += self.socket.recv(512)
@@ -59,7 +59,7 @@ class CasparCG:
             returned_data = returned_data_buffer.splitlines()[:-1]
 
         elif return_code == 201: # single-line returned_data
-            returned_data = ''
+            returned_data = b''
             while returned_data[-2:] != b'\r\n':
                 returned_data += self.socket.recv(512)
 
@@ -69,7 +69,7 @@ class CasparCG:
         else:
             raise ValueError('CasparCG command failed: ' + response)
 
-        return returned_data
+        return returned_data.decode()
 
     def _send_command(self, command, xmlreply=False):
         self.socket.send(('%s\r\n' % command).encode('UTF-8'))
