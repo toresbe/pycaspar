@@ -18,4 +18,5 @@ setuptools.setup(
         "License :: OSI Approved :: GPL License",
         "Operating System :: OS Independent",
     ],
+    setup_requires=['wheel'],
 )
