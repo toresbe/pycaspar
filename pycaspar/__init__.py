@@ -69,6 +69,8 @@ class CasparCG:
         else:
             raise ValueError('CasparCG command failed: ' + response)
 
+        if returned_data is None:
+            return None
         return returned_data.decode()
 
     def _send_command(self, command, xmlreply=False):
