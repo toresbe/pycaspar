@@ -43,6 +43,10 @@ class Layer():
         #FIXME: file name needs proper escaping
         command += '"' + filename + '" '
 
+        # caspar folk are stubbornly refusing to fix this
+        # frikanalen-internal fix; should be nop for everyone else
+        command += '"-filter:a aformat=sample_rates=48000"'
+
         if transition:
             command += transition + ' '
 
