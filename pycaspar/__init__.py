@@ -35,9 +35,7 @@ class CasparCG:
         while response[-2:] != b'\r\n':
             response += self.socket.recv(1)
 
-        logging.debug('CasparCG replied %s' % (response.strip().decode('UTF-8'),))
-
-        response = ''
+        logging.debug('CasparCG replied %s' % (response.decode().strip(),))
 
         # From the AMCP spec:
         #
@@ -69,7 +67,7 @@ class CasparCG:
             returned_data = None
 
         else:
-            raise ValueError('CasparCG command failed: ' + response)
+            raise ValueError('CasparCG command failed: ' + response.decode().strip())
 
         return returned_data
 
