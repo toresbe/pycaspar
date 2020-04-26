@@ -91,7 +91,7 @@ class CasparCG:
             root = ET.fromstring(xml_string)
             self._layers = {}
             for child in root.findall("stage/layer/"):
-                layer_id = int(re.match(r'...(?P<number>[0-9]+)$', child.tag).group('number'))
+                layer_id = int(re.match(r'layer_(?P<number>[0-9]+)$', child.tag).group('number'))
                 self._layers[layer_id] = child
 
     @property
